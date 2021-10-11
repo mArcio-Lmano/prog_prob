@@ -1,0 +1,14 @@
+##############Exercício 1##################
+var lista = repeat(10, flip) // Lista de 10 elementos (lista[n] = true || false)
+console.log(lista)
+
+// Contar os verdadeiros
+var num_of_true = sum(lista) // true = 1 && false = 0 soma todos os elementos da lista
+console.log(num_of_true)
+
+// Todos verdadeiros?
+console.log("São todos verdadeiro?", all(function(x){return x==true}, lista))
+
+//Algum verdadeiro
+console.log("Algum é verdaeiro?", any(function(x){return x==true}, lista))
+############################################
