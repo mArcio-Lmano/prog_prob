@@ -15,8 +15,14 @@ console.log("Algum é verdaeiro?", any(function(x){return x==true}, lista))
 
 
 ##############Exercício 2###################
+//Função sem a capacidade de viciar a moeda
+var moeda = function(){
+  return flip()? "Head" : "Tail"
+}
+
 // Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
 var make_coin = function(peso){
+  // peso associado à prob de sair "head"
   return function() {
     flip(peso)? "Head" : "Tail"
   }
@@ -26,7 +32,7 @@ var make_coin = function(peso){
 var normal_coin = make_coin(0.5)
 
 //Criação do histograma
-viz.hist(repeat(1000, normal_coin)) // DUVIDA DÁ A PROBABILIDADE EM VEZ DA FREQUENCIA
+viz.hist(repeat(1000, moeda))
 ############################################
 
 
@@ -44,6 +50,7 @@ var normal_coin = make_coin(0.3)
 //Criação de uma tabela onde dá a probabilidade de sair cara ou coroa
 viz.table(repeat(1000, normal_coin))
 ############################################
+
 
 ##############Exercício 4###################
 
@@ -72,6 +79,7 @@ var y = [num_Head, num_Tail]
 viz.bar(x, y, {xLabel:("Lado da moeda"), yLabel:("Número de ocorrencias")})
 
 /////////////////////USANDO O BIN/////////////////////
+(Ver Melhor na aula)
 
 var pol_dist = Binomial({p: 0.5, n: 1})
 console.log(pol_dist)
