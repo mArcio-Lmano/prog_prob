@@ -44,3 +44,36 @@ var normal_coin = make_coin(0.3)
 //Criação de uma tabela onde dá a probabilidade de sair cara ou coroa
 viz.table(repeat(1000, normal_coin))
 ############################################
+
+##############Exercício 4###################
+
+/////////////////////USANDO O FLIP/////////////////////
+// Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
+var make_coin = function(peso){
+  return function() {
+    flip(peso)? "Head" : "Tail"
+  }
+}
+
+//Criar um conjunto de cinco moedas
+var coin = make_coin(0.42)
+var moedas = repeat(5, coin)
+
+//Função que cria uma nova lista de moedas num formato binário true=1 && false=1
+var moedas_bin = map(function(x) {return x=="Head"}, moedas)
+
+//Contar o numero de "Head"s and "Tail"s
+var num_Head = sum(moedas_bin)
+var num_Tail = 5 - sum(moedas_bin)
+
+//Criação do Histograma
+var x = ["Head", "Tail"]
+var y = [num_Head, num_Tail]
+viz.bar(x, y, {xLabel:("Lado da moeda"), yLabel:("Número de ocorrencias")})
+
+/////////////////////USANDO O BIN/////////////////////
+
+var pol_dist = Binomial({p: 0.5, n: 1})
+console.log(pol_dist)
+viz(pol_dist)
+############################################
