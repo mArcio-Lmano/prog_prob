@@ -1,4 +1,4 @@
-##############Exercício 1##################
+##############Exercício 1###################
 var lista = repeat(10, flip) // Lista de 10 elementos (lista[n] = true || false)
 console.log(lista)
 
@@ -11,4 +11,36 @@ console.log("São todos verdadeiro?", all(function(x){return x==true}, lista))
 
 //Algum verdadeiro
 console.log("Algum é verdaeiro?", any(function(x){return x==true}, lista))
+############################################
+
+
+##############Exercício 2###################
+// Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
+var make_coin = function(peso){
+  return function() {
+    flip(peso)? "Head" : "Tail"
+  }
+}
+
+// Criar uma moeda nao viciada 50/50
+var normal_coin = make_coin(0.5)
+
+//Criação do histograma
+viz.hist(repeat(1000, normal_coin)) // DUVIDA DÁ A PROBABILIDADE EM VEZ DA FREQUENCIA
+############################################
+
+
+##############Exercício 3###################
+// Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
+var make_coin = function(peso){
+  return function() {
+    flip(peso)? "Head" : "Tail"
+  }
+}
+
+// Criar uma moeda viciada 70/30
+var normal_coin = make_coin(0.3)
+
+//Criação de uma tabela onde dá a probabilidade de sair cara ou coroa
+viz.table(repeat(1000, normal_coin))
 ############################################
