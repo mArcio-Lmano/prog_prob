@@ -1,6 +1,7 @@
-##############Exercício 1###################
+//##############Exercício 1###################
+console.log("Exercício 1")
 var lista = repeat(10, flip) // Lista de 10 elementos (lista[n] = true || false)
-console.log(lista)
+//console.log(lista)
 
 // Contar os verdadeiros
 var num_of_true = sum(lista) // true = 1 && false = 0 soma todos os elementos da lista
@@ -11,10 +12,11 @@ console.log("São todos verdadeiro?", all(function(x){return x==true}, lista))
 
 //Algum verdadeiro
 console.log("Algum é verdaeiro?", any(function(x){return x==true}, lista))
-############################################
+//############################################
 
 
-##############Exercício 2###################
+//##############Exercício 2###################
+console.log("Exercício 2")
 //Função sem a capacidade de viciar a moeda
 var moeda = function(){
   return flip()? "Head" : "Tail"
@@ -33,10 +35,11 @@ var normal_coin = make_coin(0.5)
 
 //Criação do histograma
 viz.hist(repeat(1000, moeda))
-############################################
+//############################################
 
 
-##############Exercício 3###################
+//##############Exercício 3###################
+console.log("Exercício 3")
 // Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
 var make_coin = function(peso){
   return function() {
@@ -49,11 +52,11 @@ var normal_coin = make_coin(0.3)
 
 //Criação de uma tabela onde dá a probabilidade de sair cara ou coroa
 viz.table(repeat(1000, normal_coin))
-############################################
+//############################################
 
 
-##############Exercício 4###################
-
+//##############Exercício 4###################
+console.log("Exercício 4.1")
 /////////////////////USANDO O FLIP/////////////////////
 // Função geral para criar um moeda com um dado peso, as moedas podem ser viciadas
 var make_coin = function(peso){
@@ -62,26 +65,55 @@ var make_coin = function(peso){
   }
 }
 
-//Criar um conjunto de cinco moedas
-var coin = make_coin(0.42)
-var moedas = repeat(5, coin)
+//Função que retorna o número de caras após lancar a moeda 5x
+var coins = function(){
+  //Criar um moeda viciada
+  var coin = make_coin(0.42)
+  //Criar um conjunto de n moedas
+  var moedas = repeat(5, coin)
+  //Função que cria uma nova lista de moedas num formato binário true=1 && false=1
+  var moedas_bin = map(function(x) {return x=="Head"}, moedas)
+  //Contar o numero de "Head"s
+  var num_Head = sum(moedas_bin)
+  return num_Head
+}
 
-//Função que cria uma nova lista de moedas num formato binário true=1 && false=1
-var moedas_bin = map(function(x) {return x=="Head"}, moedas)
-
-//Contar o numero de "Head"s and "Tail"s
-var num_Head = sum(moedas_bin)
-var num_Tail = 5 - sum(moedas_bin)
 
 //Criação do Histograma
-var x = ["Head", "Tail"]
-var y = [num_Head, num_Tail]
-viz.bar(x, y, {xLabel:("Lado da moeda"), yLabel:("Número de ocorrencias")})
+//var moedas = coins(5) // Dúvida
+//console.log(moedas)
+//var moedas_hist = repeat(10,moedas)
+
+//Repetir 100x o lancamento de 5 moedas e contar o numero de vezes que saiu cára
+var moedas_hist = repeat(1000, coins)
+
+//Criação de um histograma
+viz(moedas_hist, {xLabel:("Número de Caras"), yLabel:("\"Probabilidade\"")})
 
 /////////////////////USANDO O BIN/////////////////////
-(Ver Melhor na aula)
+//(Ver Melhor na aula)
+console.log("Exercício 4.2")
+//Distribuição binominal (Cara ou Coroa)
+var pol_dist = Binomial({p: 0.5, n: 5})
 
-var pol_dist = Binomial({p: 0.5, n: 1})
-console.log(pol_dist)
-viz(pol_dist)
-############################################
+//Criação de um histograma
+viz(pol_dist, {xLabel:("Número de Caras"), yLabel:("\"Probabilidade\"")})
+//############################################
+
+//##############Exercício 5###################
+console.log("Exercício 5")
+
+//Função que retorna o numero num dado [1-6]
+var dado = function(){
+  var r = randomInteger(6) + 1 //randomInteger devolve um inteiro [1-6]
+  return r
+}
+
+//Lancar o dado 1000x
+var dados = repeat(1000, dado)
+
+//Criação de um histograma
+viz(dados, {xLabel:("Valor do dado"), yLabel:("\"Probabilidade\"")})
+//############################################
+
+//##############Exercício 6###################
