@@ -66,11 +66,11 @@ var make_coin = function(peso){
 }
 
 //Função que retorna o número de caras após lancar a moeda 5x
-var coins = function(){
+var coins = function(n, w){
   //Criar um moeda viciada
-  var coin = make_coin(0.42)
+  var coin = make_coin(w)
   //Criar um conjunto de n moedas
-  var moedas = repeat(5, coin)
+  var moedas = repeat(n, coin)
   //Função que cria uma nova lista de moedas num formato binário true=1 && false=1
   var moedas_bin = map(function(x) {return x=="Head"}, moedas)
   //Contar o numero de "Head"s
@@ -79,25 +79,24 @@ var coins = function(){
 }
 
 
-//Criação do Histograma
-//var moedas = coins(5) // Dúvida
-//console.log(moedas)
-//var moedas_hist = repeat(10,moedas)
+//Criação do lancamento de 5 moedas com um peso de 0.42
+var moedas = function(){
+  return coins(5, 0.42)
+}
 
 //Repetir 100x o lancamento de 5 moedas e contar o numero de vezes que saiu cára
-var moedas_hist = repeat(1000, coins)
+var moedas_hist = repeat(1000, moedas)
 
 //Criação de um histograma
 viz(moedas_hist, {xLabel:("Número de Caras"), yLabel:("\"Probabilidade\"")})
 
 /////////////////////USANDO O BIN/////////////////////
-//(Ver Melhor na aula)
 console.log("Exercício 4.2")
 //Distribuição binominal (Cara ou Coroa)
 var pol_dist = Binomial({p: 0.5, n: 5})
 
 //Criação de um histograma
-viz(pol_dist, {xLabel:("Número de Caras"), yLabel:("\"Probabilidade\"")})
+viz(pol_dist, {xLabel:("Número de Caras"), yLabel:("Probabilidade")})
 //############################################
 
 //##############Exercício 5###################
@@ -117,3 +116,28 @@ viz(dados, {xLabel:("Valor do dado"), yLabel:("\"Probabilidade\"")})
 //############################################
 
 //##############Exercício 6###################
+console.log("Exercício 6")
+
+//Função que retorna o numero num dado [1-6]
+var dado = function(){
+  var r = randomInteger(6) + 1 //randomInteger devolve um inteiro [1-6]
+  return r
+}
+
+//Função para lancar multiplos dados e retornar a sua soma
+var dados = function(n){
+  var r = sum(repeat(n,dado))
+  return r
+}
+
+//Criar 5 dados
+var dices =function(){
+  return dados(5)
+}  
+
+//Fazer o lancamento de 5 dados 1000x
+var dados_hist = repeat(1000,dices)
+
+//Criação de um histograma
+viz(dados_hist, {xLabel:("Valor da soma dos dados"), yLabel:("\"Probabilidade\"")})
+//############################################
