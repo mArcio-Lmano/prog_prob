@@ -141,3 +141,30 @@ var dados_hist = repeat(1000,dices)
 //Criação de um histograma
 viz(dados_hist, {xLabel:("Valor da soma dos dados"), yLabel:("\"Probabilidade\"")})
 //############################################
+
+
+//##############Exercício 7###################
+var make_c = function(){return "C"}
+var make_d = function(){return "D"}
+var make_h = function(){return "H"}
+var make_s = function(){return "S"}
+var nipes4 = repeat(13, make_c).concat(repeat(13, make_d)).
+concat(repeat(13, make_h)).concat(repeat(13,make_s))
+
+var number = mapN(function(x){return x + 2}, 9).concat(10,10,10,11) //11 == ACE 
+var number4 = number.concat(number).concat(number).concat(number)
+
+var deck = zip(nipes4, number4)
+
+var get_card = function(){
+  var card = categorical({vs:deck})
+  var new_deck = remove(card, deck)
+  return [card, new_deck]
+}
+
+var game_stage = get_card()
+var card_draw = game_stage[0]
+var new_deck = game_stage[1] //baralho sem a carta
+console.log("A carta retirada é: " + card_draw)
+new_deck
+//############################################
