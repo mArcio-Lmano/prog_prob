@@ -146,6 +146,7 @@ viz(dados_hist, {xLabel:("Valor da soma dos dados"), yLabel:("\"Probabilidade\""
 
 
 //##############Exercício 7###################
+console.log("Exercício 7")
 //Funções auxiliares para cirar uma lista com os 52 nipes (52N)
 var make_c = function(){return "C"}
 var make_d = function(){return "D"}
@@ -182,6 +183,7 @@ new_deck
 
 
 //##############Exercício 8###################
+console.log("Exercicio 8")
 //Funções auxiliares para cirar uma lista com os 52 nipes (52N)
 var make_c = function(){return "C"}
 var make_d = function(){return "D"}
