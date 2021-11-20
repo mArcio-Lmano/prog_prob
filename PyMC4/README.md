@@ -1,7 +1,8 @@
 # PyMC4 - Apresentação Oral sobre a PPL
 
 ### Instalação da PPL:
-##### Pré-Requesitos: 
+##### Pré-Requesitos:
+
 	* **Uma pré-instalação de uma VM** (Virtual Machine) linux preferencialmente;
 	* **Uma ligação à internet**;
 	* **Jupyter Notebook**, uma biblioteca usada neste tutorial (arviz) não consegui fazer com que funciona-se com o compilador de Python
