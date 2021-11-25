@@ -5,28 +5,28 @@
 
 * **Uma pré-instalação de um VM Software** (Virtual Machine) linux-Ubuntu preferencialmente;
 * **Uma ligação à internet**;
-* **Jupyter Notebook**, uma biblioteca usada neste tutorial (arviz) não consegui fazer com que funciona-se com o compilador de Python
+* **Jupyter Notebook** (recomendado)
 
 
-### Uma vez compridos os pré-requesitos anunciados a cima podemos passar para a instalação:
+### Uma vez cumpridos os pré-requesitos poderá ser feita a instalação:
 Abrir o terminal (ctrl+alt+T, no Gnome Linux, ou procurando no menu);
 
 Atualizar o package manager do (Linux):
 
 	sudo apt update && sudo apt upgrade
 
-Instalar o python e suas dependencias:	
+Instalar o python e suas dependências:	
 
 	sudo apt install build-essential
 
-Instalar o pip para podermos baixar as bibliotecas de python
+Instalar o pip para podermos baixar as bibliotecas de python:
 
 	sudo apt install python3-pip
 	
-Instalar o Git pois a biblioteca que vamos uar é um repositóriio do GitHub
+Instalar o Git pois a biblioteca que vamos uar é um repositóriio do GitHub:
 
 	sudo apt install git 
 
-Voltar a verificar se temos todos os packages atualizados
+Voltar a verificar se temos todos os packages atualizados:
 
 	sudo apt update && sudo apt upgrade
