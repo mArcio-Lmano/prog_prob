@@ -30,3 +30,9 @@ Instalar o Git pois a biblioteca que vamos uar é um repositóriio do GitHub:
 Voltar a verificar se temos todos os packages atualizados:
 
 	sudo apt update && sudo apt upgrade
+
+Para instalar a biblioteca usamos o seguinte comando:
+	
+	pip install git+https://github.com/pymc-devs/pymc4@1c5e23825271fc2ff0c701b9224573212f56a534
+
+Agora temos tudo pronto para começar a usar a biblioteca 
