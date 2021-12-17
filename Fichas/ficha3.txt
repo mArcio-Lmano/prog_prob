@@ -1,0 +1,89 @@
+
+################# Exercício 1 #################
+print("Exercício 1")
+
+var covid_pos = function(){return flip(0.01)? flip(0.7) : flip(0.1)}
+
+var modelo = function(){
+  if (covid_pos()){return "Positivo"}
+  else{return "Negativo"}
+}
+
+viz.table(Infer(modelo))
+
+################# Exercício 2 #################
+print("Exercício 2")
+
+var modelo = function(){
+  var testeA = flip(0.01)? flip(0.7)? "P": "N": flip(0.1)? "P": "N"
+  var testeB = flip(0.01)? flip(0.9)?"P": "N": flip(0.01)? "P": "N"
+  
+  var SNS24 = flip(0.8)? testeA: testeB
+  return SNS24
+}
+
+viz.table(Infer(modelo))
+
+################# Exercício 3 #################
+print("Exercício 3")
+
+var modelo = function(){
+  var covid = flip(0.01)
+  var testeA = covid? flip(0.7): flip(0.1)
+  condition(testeA)
+  return covid? "Doente": "Não Doente"
+}
+viz.table(Infer(modelo))
+
+################# Exercício 4 #################
+
+################# Exercício 4.1 #################
+print("Exercício 4.1")
+
+  var covid = flip(0.01)
+  var testeA = covid? flip(0.7): flip(0.1)
+  var testeB = covid? flip(0.9): flip(0.01)
+  condition(testeB && testeA)
+  return covid? "Doente": "Não Doente"
+}
+
+viz.table(Infer(modelo))
+
+################# Exercício 4.2 #################
+print("Exercício 4.2")
+
+var modelo = function(){
+  var covid = flip(0.01)
+  var testeA = covid? flip(0.7): flip(0.1)
+  var testeB = covid? flip(0.9): flip(0.01)
+  var SNS24 = flip(0.8)
+  if (SNS24){
+    condition(testeA)
+    return "Teste A"
+  }
+  else{
+    condition(testeB)
+    return "Teste B"
+  }
+}
+viz.table(Infer(modelo))
+################# Exercício 4.3 #################
+print("Exercício 4.3")
+
+var modelo = function(){
+  var covid = flip(0.01)
+  var testeA = covid? flip(0.7): flip(0.1)
+  var testeB = covid? flip(0.9): flip(0.01)
+  var SNS24 = flip(0.8)
+  
+  condition(covid)
+  if (SNS24){
+    condition(testeA)
+    return "Teste A"
+  }
+  else{
+    condition(testeB)
+    return "Teste B"
+  }
+}
+viz.table(Infer(modelo))
